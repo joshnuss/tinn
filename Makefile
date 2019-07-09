@@ -1,15 +1,19 @@
 BIN = test
 
-CFLAGS = -std=c99 -Wall -Wextra -pedantic -Ofast -flto -march=native
+CFLAGS = -Wall -Wextra -pedantic -Ofast -flto -march=native
 
 LDFLAGS = -lm
 
-CC = gcc
+CC = g++
 
 SRC = test.c Tinn.c
 
 all:
 	$(CC) -o $(BIN) $(SRC) $(CFLAGS) $(LDFLAGS)
+
+debug:
+	$(CC) -o $(BIN) $(SRC) $(CFLAGS) $(LDFLAGS) -ggdb
+	gdb test
 
 run:
 	./$(BIN)
